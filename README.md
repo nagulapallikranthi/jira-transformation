@@ -1,4 +1,6 @@
 # jira-transformation
+### 📚 Documentation & Guides
+- **Jira Project Consolidation Guide** → [/wiki/Jira-Consolidation.md](/wiki/Jira-Consolidation.md)
 
 Single umbrella repository for Jira **Project Consolidation** and **Migration (JSM ↔ Jira Software Cloud)**.
 

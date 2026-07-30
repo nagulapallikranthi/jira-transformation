@@ -14,6 +14,14 @@ As Jira environments grow, they commonly accumulate duplicated workflows, fragme
 
 This repository provides an organization-neutral, reusable body of guidance for leaders and practitioners who need to simplify Jira ecosystems, control migration risk, establish sustainable governance, and create measurable operational value.
 
+## Featured Interactive Experience
+
+### [Launch the Enterprise Analytics Dashboard Gallery](dashboard-gallery/index.html)
+
+Explore five interactive, synthetic dashboard concepts covering executive portfolio health, sprint governance, JSM operations, transformation governance, and FinOps. The gallery demonstrates how governed KPI definitions become decision-ready reports.
+
+See the [Enterprise Metrics and Dashboard Library](docs/Metrics-Library.md) for formulas, ownership, interpretation, drill-down guidance, and the dashboard operating model.
+
 ## Why This Repository Exists
 
 Many Jira environments evolve through local optimization. Individual teams create workflows, fields, schemes, dashboards, and automation to solve immediate needs. Over time, those decisions can produce enterprise-wide complexity.
@@ -33,7 +41,7 @@ This framework helps organizations move from an ad hoc platform to a governed, m
 
 ## What This Repository Provides
 
-The repository combines executive guidance, decision frameworks, playbooks, runbooks, and reusable templates covering:
+The repository combines executive guidance, decision frameworks, playbooks, runbooks, interactive dashboard concepts, and reusable templates covering:
 
 - current-state assessment;
 - target operating model design;
@@ -42,6 +50,7 @@ The repository combines executive guidance, decision frameworks, playbooks, runb
 - migration planning and execution;
 - cutover, rollback, and validation controls;
 - platform health and transformation metrics;
+- executive, engineering, operations, transformation, and FinOps dashboards;
 - AI-assisted analysis and governance opportunities.
 
 ## Intended Audience
@@ -54,6 +63,7 @@ The repository combines executive guidance, decision frameworks, playbooks, runb
 - Engineering and service-management leaders
 - Platform engineering and operations teams
 - Migration and operational-readiness teams
+- Analytics and business-intelligence practitioners
 
 ## Transformation Lifecycle
 
@@ -95,6 +105,7 @@ flowchart LR
 | Area | Purpose |
 |---|---|
 | [`docs/`](docs/) | Executive frameworks, governance guidance, decision models, metrics, and reference material |
+| [`dashboard-gallery/`](dashboard-gallery/) | Interactive sample dashboards and visual reporting guidance |
 | [`playbooks/`](playbooks/) | Repeatable methods for consolidation and transformation planning |
 | [`runbooks/`](runbooks/) | Operational procedures for migration, cutover, rollback, and validation |
 | [`registers/`](registers/) | Reusable inventories and dependency matrices using synthetic data only |
@@ -104,10 +115,12 @@ flowchart LR
 
 1. [Enterprise Jira Transformation Framework](docs/Enterprise-Jira-Transformation-Framework.md)
 2. [Enterprise Jira Governance Model](docs/Governance-Model.md)
-3. [Consolidation Playbook](playbooks/consolidation-playbook.md)
-4. [Migration Runbook](playbooks/migration-runbook.md)
-5. [Cutover Checklist](runbooks/cutover_checklist.md)
-6. [Rollback Plan](runbooks/rollback_plan.md)
+3. [Enterprise Metrics and Dashboard Library](docs/Metrics-Library.md)
+4. [Interactive Enterprise Analytics Dashboard Gallery](dashboard-gallery/index.html)
+5. [Consolidation Playbook](playbooks/consolidation-playbook.md)
+6. [Migration Runbook](playbooks/migration-runbook.md)
+7. [Cutover Checklist](runbooks/cutover_checklist.md)
+8. [Rollback Plan](runbooks/rollback_plan.md)
 
 ## Executive Success Measures
 
@@ -158,7 +171,7 @@ Read [PORTFOLIO_DATA_POLICY.md](PORTFOLIO_DATA_POLICY.md) before contributing or
 
 ## Current Release Status
 
-The repository is being developed as a reference-quality knowledge product. Existing artifacts may vary in maturity while the executive framework, playbooks, runbooks, templates, diagrams, and cross-references are expanded.
+The repository is being developed as a reference-quality knowledge product. Existing artifacts may vary in maturity while the executive framework, playbooks, runbooks, templates, diagrams, dashboard prototypes, and cross-references are expanded.
 
 ## Contributing
 

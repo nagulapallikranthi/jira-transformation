@@ -1,39 +1,176 @@
-# Jira Governance and Migration Playbook
+# Enterprise Jira Transformation Framework
 
-A generic, organization-neutral collection of frameworks for Jira project consolidation, configuration governance, migration planning, cutover control, validation, and operational transition.
+> A practical, enterprise-grade framework for assessing, governing, consolidating, migrating, and continuously improving Jira environments at scale.
 
-## Data and confidentiality notice
+**Enterprise Program Leadership Series — Volume I**
 
-This repository must contain only fictional scenarios, synthetic datasets, reusable templates, and generalized guidance.
+---
 
-It must not contain employer, customer, employee, product, tenant, project, financial, security, credential, incident, or proprietary organizational information. Real Jira URLs, project keys, issue IDs, field IDs, user names, automation identifiers, screenshots, exports, and internal configurations are prohibited.
+## Executive Summary
 
-See [PORTFOLIO_DATA_POLICY.md](PORTFOLIO_DATA_POLICY.md) before adding or publishing any artifact.
+Enterprise Jira transformation is not merely a platform migration. It is a redesign of how an organization plans work, governs delivery, manages operational risk, measures performance, and produces trusted executive insight.
 
-## Repository structure
+As Jira environments grow, they commonly accumulate duplicated workflows, fragmented reporting, inconsistent configurations, unmanaged automation, and unclear ownership. These conditions increase administrative effort, weaken data quality, and make change progressively harder.
 
-- `wiki/` — Generic Jira consolidation guidance
-- `playbooks/` — Reusable transformation and migration methods
-- `runbooks/` — Cutover, rollback, and validation procedures
-- `registers/` — Template inventories and dependency matrices using synthetic data only
+This repository provides an organization-neutral, reusable body of guidance for leaders and practitioners who need to simplify Jira ecosystems, control migration risk, establish sustainable governance, and create measurable operational value.
 
-## Current maturity
+## Why This Repository Exists
 
-Some files are early-stage templates and are not yet complete implementation guides. Completed artifacts should include purpose, scope, roles, prerequisites, decision criteria, controls, outputs, validation steps, and a fictional worked example.
+Many Jira environments evolve through local optimization. Individual teams create workflows, fields, schemes, dashboards, and automation to solve immediate needs. Over time, those decisions can produce enterprise-wide complexity.
 
-## Intended audience
+Typical symptoms include:
 
-- Program and transformation managers
+- workflow and scheme proliferation;
+- duplicate or poorly governed custom fields;
+- conflicting automation rules;
+- inconsistent issue lifecycles and reporting definitions;
+- fragmented permissions and ownership;
+- unreliable executive dashboards;
+- rising administrative and support effort;
+- migration risk caused by undocumented dependencies.
+
+This framework helps organizations move from an ad hoc platform to a governed, measurable, and continuously improving operating model.
+
+## What This Repository Provides
+
+The repository combines executive guidance, decision frameworks, playbooks, runbooks, and reusable templates covering:
+
+- current-state assessment;
+- target operating model design;
+- configuration and workflow rationalization;
+- governance and decision rights;
+- migration planning and execution;
+- cutover, rollback, and validation controls;
+- platform health and transformation metrics;
+- AI-assisted analysis and governance opportunities.
+
+## Intended Audience
+
+- Program and transformation leaders
+- Technical program managers
+- PMO and portfolio leaders
 - Jira and Atlassian platform owners
-- PMO and governance teams
+- Enterprise and solution architects
 - Engineering and service-management leaders
+- Platform engineering and operations teams
 - Migration and operational-readiness teams
 
-## Guiding principles
+## Transformation Lifecycle
 
-1. Standardize before migrating.
-2. Inventory dependencies before changing configurations.
-3. Separate reusable methods from organization-specific implementation.
-4. Use synthetic data for every example.
-5. Define measurable entry, exit, validation, and rollback criteria.
-6. Preserve auditability and human approval for high-impact changes.
+```mermaid
+flowchart LR
+    A[Assess] --> B[Design]
+    B --> C[Govern]
+    C --> D[Prepare]
+    D --> E[Migrate]
+    E --> F[Validate]
+    F --> G[Stabilize]
+    G --> H[Optimize]
+    H --> A
+```
+
+| Phase | Leadership Question | Primary Outcome |
+|---|---|---|
+| Assess | What complexity and risk exist today? | Evidence-based current-state baseline |
+| Design | What operating model should replace it? | Target architecture and principles |
+| Govern | Who decides, approves, and owns change? | Decision rights and control model |
+| Prepare | Are dependencies, data, and teams ready? | Approved migration and readiness plan |
+| Migrate | How will change be executed safely? | Controlled implementation |
+| Validate | Did the platform and business processes work? | Verified technical and operational outcomes |
+| Stabilize | Are defects, adoption, and support controlled? | Predictable transition to operations |
+| Optimize | How will value and health improve over time? | Continuous-improvement backlog and metrics |
+
+## Guiding Principles
+
+1. **Business outcomes before platform activity** — Every change should support a measurable operational or strategic objective.
+2. **Standardize before automating** — Automation scales both good and bad process design.
+3. **Configure once, reuse many times** — Shared patterns reduce maintenance cost and reporting variance.
+4. **Govern through explicit decision rights** — High-impact changes require accountable ownership and evidence.
+5. **Design for reversibility** — Migration and cutover plans must include objective rollback triggers.
+6. **Measure value and platform health** — Completion is not success unless outcomes improve.
+7. **Preserve human accountability** — AI and automation may assist decisions but should not obscure ownership or auditability.
+
+## Repository Navigation
+
+| Area | Purpose |
+|---|---|
+| [`docs/`](docs/) | Executive frameworks, governance guidance, decision models, metrics, and reference material |
+| [`playbooks/`](playbooks/) | Repeatable methods for consolidation and transformation planning |
+| [`runbooks/`](runbooks/) | Operational procedures for migration, cutover, rollback, and validation |
+| [`registers/`](registers/) | Reusable inventories and dependency matrices using synthetic data only |
+| [`wiki/`](wiki/) | Supporting knowledge and navigation content |
+
+### Start Here
+
+1. [Enterprise Jira Transformation Framework](docs/Enterprise-Jira-Transformation-Framework.md)
+2. [Enterprise Jira Governance Model](docs/Governance-Model.md)
+3. [Consolidation Playbook](playbooks/consolidation-playbook.md)
+4. [Migration Runbook](playbooks/migration-runbook.md)
+5. [Cutover Checklist](runbooks/cutover_checklist.md)
+6. [Rollback Plan](runbooks/rollback_plan.md)
+
+## Executive Success Measures
+
+A transformation should demonstrate improvement across both platform health and business operations.
+
+| Dimension | Example Measures |
+|---|---|
+| Simplification | Workflow reduction, custom-field reduction, scheme reuse |
+| Governance | Approval compliance, ownership coverage, audit findings |
+| Reliability | Automation success rate, migration defect rate, rollback frequency |
+| Productivity | Administrative effort, onboarding time, cycle-time improvement |
+| Data quality | Required-field completeness, reporting consistency, reconciliation defects |
+| Adoption | Standard-template usage, training completion, user satisfaction |
+| Executive insight | KPI definition consistency, dashboard trust, reporting latency |
+
+## Decision Quality Standard
+
+Recommendations in this repository should explain:
+
+- why the approach is recommended;
+- when an alternative may be preferable;
+- the trade-offs and risks involved;
+- the evidence required before proceeding;
+- how success will be measured.
+
+The goal is not to prescribe one universal configuration. It is to improve the quality, transparency, and repeatability of enterprise decisions.
+
+## AI-Assisted Transformation
+
+AI can accelerate analysis and documentation when used with appropriate data controls and human review. Practical opportunities include:
+
+- detecting duplicate or semantically similar configurations;
+- summarizing workflow and dependency inventories;
+- generating draft JQL and validation scenarios;
+- identifying governance drift and migration risks;
+- producing executive status summaries from approved data;
+- supporting documentation quality and completeness checks.
+
+AI-generated recommendations should remain explainable, reviewable, and subject to accountable approval.
+
+## Data and Confidentiality Policy
+
+This repository contains only generalized guidance, placeholders, fictional scenarios, and synthetic datasets. It must not include employer, customer, employee, product, tenant, project, financial, security, credential, incident, or proprietary organizational information.
+
+Real Jira URLs, project keys, issue IDs, field IDs, user names, automation identifiers, screenshots, exports, and internal configurations are prohibited.
+
+Read [PORTFOLIO_DATA_POLICY.md](PORTFOLIO_DATA_POLICY.md) before contributing or publishing an artifact.
+
+## Current Release Status
+
+The repository is being developed as a reference-quality knowledge product. Existing artifacts may vary in maturity while the executive framework, playbooks, runbooks, templates, diagrams, and cross-references are expanded.
+
+## Contributing
+
+Contributions should preserve the following standards:
+
+- organization-neutral content;
+- synthetic examples and configurable placeholders;
+- explicit purpose, scope, ownership, controls, and outputs;
+- measurable validation and success criteria;
+- clear trade-offs and decision guidance;
+- accessible, professional writing.
+
+## License
+
+Licensing terms will be added before public release. Until then, reuse should be treated as restricted to repository review and development.

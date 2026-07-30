@@ -1,36 +1,70 @@
 # Baseline Delivery Status
 
-## Current state
+## Objective
 
-The first public baseline establishes a navigable, governed, and extensible reference framework. It is intended to be reviewed and deepened in subsequent iterations rather than treated as a finished product implementation.
+Baseline v1.0 is intended to provide a substantively usable enterprise reference, not placeholder scaffolding. Every major area must reach at least 85% maturity before v1.0 is declared complete.
 
-## Baseline complete
+## Completed foundation
 
 - Public repository and Apache 2.0 licensing
 - Live GitHub Pages executive dashboard gallery
-- Core framework, governance, migration, cutover, and rollback material
-- Metrics and dashboard library foundation
+- Core transformation framework and governance model
+- Consolidation, migration, cutover, and rollback material
 - Public-data and confidentiality controls
 - Site map, repository structure, navigation model, and documentation standards
 - Contribution, conduct, security, issue, and pull-request governance
-- Roadmap, changelog, analytics index, technical-library index, dataset policy, and template index
+- Roadmap, changelog, FAQ, glossary, and portal navigation hub
+- Governed enterprise KPI catalogue across eight decision domains
+- Dashboard specification and publication standard
+- Enterprise Jira transformation reference architecture
+- Power BI implementation architecture and semantic-model guidance
+- Initial usable JQL reference library
 
-## Baseline partially complete
+## Current maturity assessment
 
-- Dashboard gallery contains five representative domains but not the full target portfolio.
-- Metrics library provides the operating model and core examples but requires a larger governed KPI catalogue.
-- Existing playbooks and runbooks require consistency review against the documentation standard.
-- Portal navigation is functional but remains a single-page dashboard experience rather than a full documentation application.
+| Area | Current maturity | Evidence | Next work required |
+|---|---:|---|---|
+| Repository and open-source governance | 95% | License, contribution, conduct, security, templates, changelog | Tagged release and repository settings |
+| Documentation architecture and navigation | 88% | Portal home, site map, standards, glossary, FAQ, cross-links | Full rendered documentation navigation and automated link validation |
+| Transformation framework | 85% | Lifecycle, governance, architecture, migration controls | Consistency and case-study review |
+| Governance framework | 85% | Decision principles, ownership, standards, exception controls | Detailed RACI and governance cadence pack |
+| Metrics library | 82% | Core library plus governed multi-domain KPI catalogue | Formula-level specifications and target examples for every published metric |
+| Dashboard standards | 85% | Live gallery plus dashboard specification and publication controls | Additional governed domain specifications and accessibility validation |
+| Playbooks and runbooks | 70% | Consolidation, migration, cutover, rollback assets | Standardize structure and add validation, hypercare, and operational governance depth |
+| Power BI guidance | 70% | Architecture, semantic-model, refresh, security, and reconciliation baseline | DAX library, sample model, deployment and failure runbooks |
+| JQL library | 65% | Usable baseline queries with limitations and validation | Advanced governance, sprint-history, JSM, and scale examples |
+| SQL library | 10% | Structure and target patterns defined | Implement normalized schema, snapshot, history, and reconciliation examples |
+| MDX library | 10% | Structure and target patterns defined | Implement rolling-period, pipeline, cost, and trend measures |
+| DAX library | 10% | Measure principles defined | Implement KPI, target, RAG, trend, and narrative measures |
+| REST API library | 10% | Architecture and integration principles defined | Extraction, pagination, retry, rate-limit, and write-back examples |
+| Automation library | 10% | Guardrails described | Implement idempotent rule and audit patterns |
+| Synthetic datasets | 15% | Public-data and synthetic-data standards | Publish representative issue, sprint, SLA, history, and cost data |
+| Templates and downloadable assets | 25% | Template structure and core operational assets | Add editable governance, KPI, readiness, RAID, migration, and reporting packs |
+| AI guidance | 20% | Accountability and architecture principles | Add explainable narrative, anomaly, forecast, and governance examples |
 
-## Deferred to the next review cycle
+## Overall position
 
-- Production-ready Power BI files and semantic models
-- Large synthetic datasets and data dictionaries
-- Full JQL, SQL, MDX, DAX, REST, automation, and Python libraries
-- Search, accessibility certification, performance budgets, and automated link validation
-- Versioned downloadable template packs
-- Advanced AI forecasting and recommendation examples
+The repository has moved beyond structural readiness into a usable enterprise baseline. The current weighted maturity is approximately **62% toward Baseline v1.0**. No area below 85% will be presented as complete.
 
-## Baseline acceptance criteria
+## Active execution order
 
-The baseline is accepted when the repository is public, licensed, safely governed, live on GitHub Pages, understandable to a new visitor, and structurally ready for systematic expansion. It does not require every planned dashboard or technical example to be complete.
+1. SQL, MDX, DAX, REST API, automation, and Python libraries
+2. Synthetic enterprise dataset and data dictionary
+3. Playbook and runbook standardization
+4. Detailed dashboard specifications and Power BI semantic model
+5. Template and downloadable asset pack
+6. Portal rendering, accessibility, performance, search, and validation
+7. AI-assisted insight and governance examples
+
+## Baseline v1.0 acceptance criteria
+
+Baseline v1.0 is accepted only when:
+
+- every major area in the maturity table is at or above 85%;
+- documentation is navigable and cross-linked;
+- implementation examples include assumptions, validation, limitations, security, and scale considerations;
+- dashboards and measures reconcile to governed KPI definitions;
+- synthetic data supports representative testing;
+- playbooks and runbooks use a consistent operational standard;
+- public-data, licensing, security, accessibility, and contribution controls are satisfied;
+- remaining work consists of advanced enhancements rather than missing foundations.

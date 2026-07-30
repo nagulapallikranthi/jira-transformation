@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security or confidential-data report
+    url: https://github.com/nagulapallikranthi/jira-transformation/security/policy
+    about: Do not disclose secrets, vulnerabilities, or confidential information in a public issue.

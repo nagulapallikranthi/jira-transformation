@@ -1,31 +1,43 @@
 # Enterprise Analytics Library
 
-This area will contain implementation-ready specifications for enterprise Jira, JSM, delivery, DevOps, FinOps, governance, and transformation reporting.
+This area contains governed specifications for enterprise Jira, Jira Service Management, delivery, DevOps, FinOps, governance, and transformation reporting.
+
+## Start here
+
+- [Governed Enterprise KPI Catalogue](KPI-Catalogue.md)
+- [Dashboard Specification Standard](Dashboard-Specification-Standard.md)
+- [Metrics and Dashboard Library](../docs/Metrics-Library.md)
+- [Power BI Implementation Guide](../docs/Power-BI-Implementation-Guide.md)
+- [Interactive Dashboard Gallery](../dashboard-gallery/)
 
 ## Domains
 
-| Domain | Primary decisions |
-|---|---|
-| Executive portfolio | Strategic health, intervention, investment, and benefits |
-| Program and delivery | Predictability, dependencies, scope, risk, and milestones |
-| Sprint and flow | Commitment reliability, throughput, aging, blockers, and quality |
-| JSM operations | Demand, SLA, backlog, incident, request, and change performance |
-| DevOps | Deployment frequency, lead time, failure rate, and recovery |
-| FinOps | Realized savings, pipeline, cost avoidance, and cost growth |
-| Transformation | Adoption, standardization, data quality, governance, and automation |
-| AI insights | Explainable summaries, anomalies, forecasts, and recommended actions |
+| Domain | Primary decisions | Baseline coverage |
+|---|---|---|
+| Executive portfolio | Strategic health, intervention, investment, and benefits | Governed KPI set established |
+| Program and delivery | Predictability, dependencies, scope, risk, and milestones | Governed KPI set established |
+| Sprint and flow | Commitment reliability, throughput, aging, blockers, and quality | Governed KPI set established |
+| JSM operations | Demand, SLA, backlog, incident, request, and change performance | Governed KPI set established |
+| DevOps | Deployment frequency, lead time, failure rate, and recovery | Governed KPI set established |
+| FinOps | Realized savings, pipeline, cost avoidance, and cost growth | Governed KPI set established |
+| Transformation | Adoption, standardization, data quality, governance, and automation | Governed KPI set established |
+| AI insights | Explainable summaries, anomalies, forecasts, and recommended actions | Principles established; implementation examples planned |
 
 ## Required specification for every dashboard
 
-- purpose and audience;
-- decisions supported;
-- KPI definitions and formulas;
-- source objects and required fields;
-- filters and drill-downs;
-- target, threshold, and RAG logic;
-- refresh and reconciliation controls;
-- interpretation and expected actions;
-- privacy and confidentiality constraints;
-- validation scenarios.
+Every dashboard must define:
 
-The initial interactive concepts are available in `dashboard-gallery/`. Governed metric definitions are maintained in `docs/Metrics-Library.md`.
+- purpose, audience, and decisions supported;
+- included and excluded scope;
+- KPI definitions, formulas, and owners;
+- source objects, required fields, and grain;
+- filters, drill paths, and default views;
+- targets, thresholds, RAG, and missing-data behavior;
+- refresh, freshness, and reconciliation controls;
+- security, export, and confidentiality constraints;
+- interpretation and expected management actions;
+- positive, negative, boundary, missing-data, and scale validation scenarios.
+
+## Publication rule
+
+A dashboard may be labelled **governed** only when all published measures exist in the KPI catalogue, source totals reconcile within approved tolerance, thresholds are approved, data freshness is visible, and business, data, and technical ownership is recorded. Otherwise it must be labelled **concept** or **experimental**.

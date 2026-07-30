@@ -1,0 +1,34 @@
+name: Documentation improvement
+description: Report an error, gap, unclear section, or navigation problem.
+title: "[Docs]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: "Thank you for improving the framework. Do not include confidential or organization-specific information."
+  - type: input
+    id: location
+    attributes:
+      label: Document or page
+      description: Provide the repository path or public-page location.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Explain what is inaccurate, missing, outdated, or difficult to use.
+    validations:
+      required: true
+  - type: textarea
+    id: recommendation
+    attributes:
+      label: Recommended change
+      description: Describe the desired outcome or proposed wording.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public-data confirmation
+      options:
+        - label: This issue contains no credentials, personal data, customer data, internal URLs, or proprietary information.
+          required: true

@@ -2,7 +2,8 @@
 
 [![Live Portal](https://img.shields.io/badge/Live%20Portal-GitHub%20Pages-2f6f9f)](https://nagulapallikranthi.github.io/jira-transformation/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-4b7f52)](LICENSE)
-[![Baseline](https://img.shields.io/badge/Baseline-0.1.0-6b7280)](CHANGELOG.md)
+[![Baseline](https://img.shields.io/badge/Baseline-v1.0%20in%20progress-6b7280)](docs/Baseline-Status.md)
+[![Maturity](https://img.shields.io/badge/Weighted%20Maturity-62%25-orange)](docs/Baseline-Status.md)
 
 > A practical, organization-neutral framework for assessing, governing, consolidating, migrating, measuring, and continuously improving Jira environments at enterprise scale.
 
@@ -14,16 +15,26 @@
 
 Explore interactive synthetic dashboards for executive portfolio health, sprint governance, JSM operations, transformation governance, and FinOps. The gallery demonstrates how governed metrics can become decision-ready reporting without exposing organizational information.
 
+## Documentation portal
+
+### [Open the structured documentation portal](docs/Portal-Home.md)
+
+Use the portal to navigate by role across the framework, governance, architecture, analytics, technical implementation, migration assets, project status, FAQ, and glossary.
+
 ## Choose your path
 
 | Goal | Start here |
 |---|---|
 | Understand the transformation lifecycle | [Enterprise Jira Transformation Framework](docs/Enterprise-Jira-Transformation-Framework.md) |
 | Establish decision rights and controls | [Governance Model](docs/Governance-Model.md) |
-| Define trusted KPIs and dashboards | [Metrics and Dashboard Library](docs/Metrics-Library.md) |
+| Understand the target architecture | [Enterprise Reference Architecture](docs/Enterprise-Reference-Architecture.md) |
+| Define trusted KPIs | [Governed KPI Catalogue](analytics/KPI-Catalogue.md) |
+| Specify decision-ready dashboards | [Dashboard Specification Standard](analytics/Dashboard-Specification-Standard.md) |
+| Implement Jira analytics in Power BI | [Power BI Implementation Guide](docs/Power-BI-Implementation-Guide.md) |
+| Use reusable Jira queries | [Baseline JQL Library](technical-libraries/jql/Baseline-JQL-Library.md) |
 | Plan consolidation or migration | [Consolidation Playbook](playbooks/consolidation-playbook.md) and [Migration Runbook](playbooks/migration-runbook.md) |
 | Prepare cutover and rollback | [Cutover Checklist](runbooks/cutover_checklist.md) and [Rollback Plan](runbooks/rollback_plan.md) |
-| Understand the public-site structure | [Site Map](docs/Site-Map.md) and [Navigation Model](docs/Navigation-Model.md) |
+| Find definitions and answers | [Glossary](docs/Glossary.md) and [FAQ](docs/FAQ.md) |
 | Contribute content safely | [Contributing Guide](CONTRIBUTING.md) and [Data Policy](PORTFOLIO_DATA_POLICY.md) |
 | Review delivery maturity | [Baseline Delivery Status](docs/Baseline-Status.md) and [Roadmap](ROADMAP.md) |
 
@@ -43,6 +54,8 @@ This repository provides a reusable public reference for moving from an ad hoc e
 - dependency discovery, migration-wave planning, cutover, rollback, and hypercare;
 - executive, program, sprint, JSM, DevOps, FinOps, and transformation analytics;
 - governed KPI definitions, dashboard specifications, and reporting controls;
+- Power BI architecture, semantic-model, refresh, security, and reconciliation guidance;
+- reusable JQL and expanding SQL, MDX, DAX, REST, automation, and Python libraries;
 - reusable templates, technical examples, and synthetic datasets;
 - explainable, auditable AI-assistance patterns with human accountability.
 
@@ -91,14 +104,14 @@ flowchart LR
 | Area | Purpose |
 |---|---|
 | [`dashboard-gallery/`](dashboard-gallery/) | Live interactive dashboard prototype |
-| [`docs/`](docs/) | Frameworks, governance, metrics, architecture, standards, and reference guidance |
-| [`analytics/`](analytics/) | Dashboard and metric specifications by reporting domain |
+| [`docs/`](docs/) | Frameworks, governance, metrics, architecture, standards, portal, and reference guidance |
+| [`analytics/`](analytics/) | Governed KPI catalogue and dashboard specification standards |
 | [`playbooks/`](playbooks/) | Repeatable transformation and consolidation methods |
 | [`runbooks/`](runbooks/) | Operational migration, cutover, rollback, validation, and stabilization procedures |
 | [`registers/`](registers/) | Reusable inventories and dependency matrices using synthetic data |
 | [`templates/`](templates/) | Editable governance, planning, readiness, and reporting templates |
 | [`datasets/`](datasets/) | Synthetic datasets and data dictionaries |
-| [`technical-libraries/`](technical-libraries/) | JQL, SQL, MDX, DAX, REST, automation, and Python examples |
+| [`technical-libraries/`](technical-libraries/) | JQL, SQL, MDX, DAX, REST, automation, and Python implementation examples |
 | [`wiki/`](wiki/) | Supporting knowledge and navigation content |
 
 See [Repository Structure](docs/Repository-Structure.md) for placement and naming rules.
@@ -115,9 +128,9 @@ Real Jira URLs, project keys, issue IDs, field IDs, account IDs, user names, aut
 
 ## Project status
 
-The first public baseline is established: the repository is licensed, governed, live on GitHub Pages, navigable, and structurally ready for expansion. Dashboard, metric, technical-library, dataset, and implementation assets will be deepened in subsequent review cycles.
+Baseline v1.0 is actively being built against an explicit rule: every major area must reach at least 85% maturity before the baseline is declared complete. The current weighted maturity is approximately **62%**, with the framework, governance, architecture, documentation navigation, and dashboard standards at or near the target threshold. Technical libraries, synthetic datasets, downloadable assets, and AI examples remain the largest workstreams.
 
-Track scope and maturity through [Baseline Delivery Status](docs/Baseline-Status.md), [Roadmap](ROADMAP.md), and [Changelog](CHANGELOG.md).
+Track exact area-level maturity through [Baseline Delivery Status](docs/Baseline-Status.md), [Roadmap](ROADMAP.md), and [Changelog](CHANGELOG.md).
 
 ## Contributing and security
 

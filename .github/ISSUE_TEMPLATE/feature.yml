@@ -1,0 +1,46 @@
+name: Framework or feature proposal
+description: Propose a new framework section, dashboard, metric, template, or implementation asset.
+title: "[Proposal]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: "Proposals should solve a reusable enterprise problem and remain organization-neutral."
+  - type: input
+    id: audience
+    attributes:
+      label: Intended audience
+      placeholder: CIO, PMO, Jira administrator, engineering manager, analyst...
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or decision supported
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Proposed outcome
+      description: Describe the document, dashboard, template, example, or capability.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: State how usefulness, quality, and completion should be validated.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and risks
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public-data confirmation
+      options:
+        - label: The proposal can be delivered using synthetic examples and contains no confidential information.
+          required: true

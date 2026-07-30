@@ -4,21 +4,32 @@ This area contains reusable, organization-neutral implementation examples that t
 
 ## Available now
 
-- [Baseline JQL Reference Library](jql/Baseline-JQL-Library.md) — backlog, aging, sprint, SLA, cost, and governance cohorts with validation guidance.
+- [Enterprise JQL Reference Library](jql/README.md) — categorized enterprise query patterns for executive reporting, portfolio, sprint governance, JSM, CloudOps, DevOps, FinOps, and data quality.
+- [Baseline JQL Reference Library](jql/Baseline-JQL-Library.md) — compact backlog, aging, sprint, SLA, cost, and governance cohorts with validation guidance.
 - [Power BI Implementation Guide](../docs/Power-BI-Implementation-Guide.md) — architecture, semantic model, refresh, security, performance, reconciliation, and deployment guidance.
 - [Governed KPI Catalogue](../analytics/KPI-Catalogue.md) — business definitions that technical measures must implement.
+
+## Enterprise JQL modules
+
+| Module | Coverage |
+|---|---|
+| [Executive and Portfolio](jql/executive-and-portfolio.md) | Active portfolio, milestones, strategic risk, dependencies, ownership, and benefits |
+| [Sprint and Delivery Governance](jql/sprint-and-delivery.md) | Sprint state, estimation, blockers, aging, rollover, backlog, and release readiness |
+| [JSM and SLA Operations](jql/jsm-and-sla.md) | Incidents, requests, changes, SLA cohorts, priority, aging, and operational hygiene |
+| [CloudOps, DevOps, and FinOps](jql/cloudops-devops-finops.md) | Reliability, security, automation, release, cloud routing, and financial pipeline |
+| [Data Quality and Governance](jql/data-quality-and-governance.md) | Missing metadata, invalid states, ownership gaps, stale work, and control exceptions |
 
 ## Library roadmap
 
 | Library | Baseline purpose | Status |
 |---|---|---|
-| `jql/` | Issue selection, cohort definitions, governance checks, and operational queues | Initial usable baseline |
-| `sql/` | Normalized analytics model, history, snapshots, and reconciliation | Planned next batch |
-| `mdx/` | EazyBI rolling periods, realized-versus-pipeline logic, and trends | Planned next batch |
-| `dax/` | Power BI measures, targets, RAG states, and executive narratives | Planned next batch |
-| `rest-api/` | Authenticated extraction, pagination, rate limits, retries, and write-back controls | Planned next batch |
-| `automation/` | Jira automation patterns, idempotency, audit, and guardrails | Planned next batch |
-| `python/` | Validation, transformation, synthetic-data generation, and quality checks | Planned next batch |
+| `jql/` | Issue selection, cohort definitions, governance checks, and operational queues | Expanded usable baseline |
+| `sql/` | Normalized analytics model, history, snapshots, and reconciliation | Next implementation batch |
+| `mdx/` | EazyBI rolling periods, realized-versus-pipeline logic, and trends | Next implementation batch |
+| `dax/` | Power BI measures, targets, RAG states, and executive narratives | Next implementation batch |
+| `rest-api/` | Authenticated extraction, pagination, rate limits, retries, and write-back controls | Planned |
+| `automation/` | Jira automation patterns, idempotency, audit, and guardrails | Planned |
+| `python/` | Validation, transformation, synthetic-data generation, and quality checks | Planned |
 
 ## Example standard
 

@@ -4,42 +4,45 @@
 
 **Enterprise Program Leadership Series — Volume I**
 
+[Launch the live Executive Analytics Portal](https://nagulapallikranthi.github.io/jira-transformation/) · [Explore the Metrics Library](docs/Metrics-Library.md) · [Review the Framework](docs/Enterprise-Jira-Transformation-Framework.md)
+
 ---
 
-## Executive Summary
+## Executive Overview
 
 Enterprise Jira transformation is not merely a platform migration. It is a redesign of how an organization plans work, governs delivery, manages operational risk, measures performance, and produces trusted executive insight.
 
 As Jira environments grow, they commonly accumulate duplicated workflows, fragmented reporting, inconsistent configurations, unmanaged automation, and unclear ownership. These conditions increase administrative effort, weaken data quality, and make change progressively harder.
 
-This repository provides an organization-neutral, reusable body of guidance for leaders and practitioners who need to simplify Jira ecosystems, control migration risk, establish sustainable governance, and create measurable operational value.
+This public repository provides an organization-neutral knowledge product for leaders and practitioners who need to simplify Jira ecosystems, control migration risk, establish sustainable governance, and create measurable operational value.
 
-## Featured Interactive Experience
+## Choose Your Path
 
-### [Launch the Enterprise Analytics Dashboard Gallery](dashboard-gallery/index.html)
+| Goal | Start Here | Outcome |
+|---|---|---|
+| View executive reporting | [Live Executive Analytics Portal](https://nagulapallikranthi.github.io/jira-transformation/) | Explore decision-ready portfolio, sprint, JSM, transformation, and FinOps views |
+| Understand the transformation model | [Enterprise Jira Transformation Framework](docs/Enterprise-Jira-Transformation-Framework.md) | Learn the lifecycle, principles, and decision model |
+| Establish governance | [Enterprise Jira Governance Model](docs/Governance-Model.md) | Define ownership, controls, decision rights, and review cadence |
+| Standardize measurement | [Enterprise Metrics and Dashboard Library](docs/Metrics-Library.md) | Define formulas, thresholds, ownership, and dashboard behavior |
+| Plan consolidation | [Consolidation Playbook](playbooks/consolidation-playbook.md) | Build an evidence-based rationalization approach |
+| Execute migration | [Migration Runbook](playbooks/migration-runbook.md) | Plan and control migration activities |
+| Prepare cutover and recovery | [Cutover Checklist](runbooks/cutover_checklist.md) and [Rollback Plan](runbooks/rollback_plan.md) | Establish readiness, validation, and recovery controls |
 
-Explore five interactive, synthetic dashboard concepts covering executive portfolio health, sprint governance, JSM operations, transformation governance, and FinOps. The gallery demonstrates how governed KPI definitions become decision-ready reports.
+## Live Analytics Experience
 
-See the [Enterprise Metrics and Dashboard Library](docs/Metrics-Library.md) for formulas, ownership, interpretation, drill-down guidance, and the dashboard operating model.
+The public GitHub Pages site currently presents five interactive dashboard prototypes:
 
-## Why This Repository Exists
+- Executive Portfolio
+- Sprint Governance
+- JSM Operations
+- Transformation Governance
+- FinOps
 
-Many Jira environments evolve through local optimization. Individual teams create workflows, fields, schemes, dashboards, and automation to solve immediate needs. Over time, those decisions can produce enterprise-wide complexity.
+All programs, services, teams, financial figures, and operational values are synthetic. The dashboards demonstrate information architecture and decision patterns rather than production performance.
 
-Typical symptoms include:
+[Open the live dashboard gallery](https://nagulapallikranthi.github.io/jira-transformation/) or review its [implementation notes](dashboard-gallery/README.md).
 
-- workflow and scheme proliferation;
-- duplicate or poorly governed custom fields;
-- conflicting automation rules;
-- inconsistent issue lifecycles and reporting definitions;
-- fragmented permissions and ownership;
-- unreliable executive dashboards;
-- rising administrative and support effort;
-- migration risk caused by undocumented dependencies.
-
-This framework helps organizations move from an ad hoc platform to a governed, measurable, and continuously improving operating model.
-
-## What This Repository Provides
+## What the Framework Covers
 
 The repository combines executive guidance, decision frameworks, playbooks, runbooks, interactive dashboard concepts, and reusable templates covering:
 
@@ -48,15 +51,15 @@ The repository combines executive guidance, decision frameworks, playbooks, runb
 - configuration and workflow rationalization;
 - governance and decision rights;
 - migration planning and execution;
-- cutover, rollback, and validation controls;
+- cutover, rollback, reconciliation, and validation controls;
 - platform health and transformation metrics;
-- executive, engineering, operations, transformation, and FinOps dashboards;
+- executive, engineering, operations, transformation, and FinOps analytics;
 - AI-assisted analysis and governance opportunities.
 
 ## Intended Audience
 
+- CIO, CTO, and technology executives
 - Program and transformation leaders
-- Technical program managers
 - PMO and portfolio leaders
 - Jira and Atlassian platform owners
 - Enterprise and solution architects
@@ -100,27 +103,31 @@ flowchart LR
 6. **Measure value and platform health** — Completion is not success unless outcomes improve.
 7. **Preserve human accountability** — AI and automation may assist decisions but should not obscure ownership or auditability.
 
+## Information Architecture
+
+The repository and public portal follow a common navigation model:
+
+```text
+Home | Framework | Analytics | Governance | Playbooks | Runbooks | Reference | Roadmap
+```
+
+| Blueprint | Purpose |
+|---|---|
+| [Site Map](docs/Site-Map.md) | Defines public sections, audience journeys, and planned portal hierarchy |
+| [Repository Structure](docs/Repository-Structure.md) | Defines folder responsibilities, placement rules, and target growth model |
+| [Documentation Standards](docs/Documentation-Standards.md) | Defines writing, metrics, dashboard, technical-example, and review standards |
+| [Navigation Model](docs/Navigation-Model.md) | Defines how visitors move between the live portal, repository, and implementation artifacts |
+
 ## Repository Navigation
 
 | Area | Purpose |
 |---|---|
-| [`docs/`](docs/) | Executive frameworks, governance guidance, decision models, metrics, and reference material |
-| [`dashboard-gallery/`](dashboard-gallery/) | Interactive sample dashboards and visual reporting guidance |
-| [`playbooks/`](playbooks/) | Repeatable methods for consolidation and transformation planning |
-| [`runbooks/`](runbooks/) | Operational procedures for migration, cutover, rollback, and validation |
+| [`dashboard-gallery/`](dashboard-gallery/) | Live executive analytics experience and interactive reporting prototypes |
+| [`docs/`](docs/) | Executive frameworks, governance guidance, architecture, metrics, and reference material |
+| [`playbooks/`](playbooks/) | Repeatable methods for assessment, consolidation, and transformation planning |
+| [`runbooks/`](runbooks/) | Controlled procedures for migration, cutover, rollback, and validation |
 | [`registers/`](registers/) | Reusable inventories and dependency matrices using synthetic data only |
 | [`wiki/`](wiki/) | Supporting knowledge and navigation content |
-
-### Start Here
-
-1. [Enterprise Jira Transformation Framework](docs/Enterprise-Jira-Transformation-Framework.md)
-2. [Enterprise Jira Governance Model](docs/Governance-Model.md)
-3. [Enterprise Metrics and Dashboard Library](docs/Metrics-Library.md)
-4. [Interactive Enterprise Analytics Dashboard Gallery](dashboard-gallery/index.html)
-5. [Consolidation Playbook](playbooks/consolidation-playbook.md)
-6. [Migration Runbook](playbooks/migration-runbook.md)
-7. [Cutover Checklist](runbooks/cutover_checklist.md)
-8. [Rollback Plan](runbooks/rollback_plan.md)
 
 ## Executive Success Measures
 
@@ -171,11 +178,13 @@ Read [PORTFOLIO_DATA_POLICY.md](PORTFOLIO_DATA_POLICY.md) before contributing or
 
 ## Current Release Status
 
-The repository is being developed as a reference-quality knowledge product. Existing artifacts may vary in maturity while the executive framework, playbooks, runbooks, templates, diagrams, dashboard prototypes, and cross-references are expanded.
+The live executive dashboard is available as a public prototype. The broader framework remains under active development while playbooks, runbooks, templates, technical examples, synthetic datasets, and the documentation portal are expanded.
+
+Content maturity is identified as Concept, Draft, Reference, Template, or Prototype according to the [Documentation Standards](docs/Documentation-Standards.md).
 
 ## Contributing
 
-Contributions should preserve the following standards:
+Contributions should preserve:
 
 - organization-neutral content;
 - synthetic examples and configurable placeholders;
@@ -184,6 +193,8 @@ Contributions should preserve the following standards:
 - clear trade-offs and decision guidance;
 - accessible, professional writing.
 
+Formal contribution guidance and community files are planned for the next public-readiness release.
+
 ## License
 
-Licensing terms will be added before public release. Until then, reuse should be treated as restricted to repository review and development.
+A public-use license is not yet attached. Until a license is added, the repository is publicly viewable but reuse and redistribution rights are not granted automatically.

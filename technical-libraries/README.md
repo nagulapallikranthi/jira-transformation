@@ -6,6 +6,9 @@ This area contains reusable, organization-neutral implementation examples that t
 
 - [Enterprise JQL Reference Library](jql/README.md) — categorized enterprise query patterns for executive reporting, portfolio, sprint governance, JSM, CloudOps, DevOps, FinOps, and data quality.
 - [Baseline JQL Reference Library](jql/Baseline-JQL-Library.md) — compact backlog, aging, sprint, SLA, cost, and governance cohorts with validation guidance.
+- [Enterprise SQL Analytics Library](sql/README.md) — dimensional modeling, snapshots, incremental loading, reconciliation, data quality, and warehouse design.
+- [Enterprise MDX Library](mdx/README.md) — EazyBI rolling periods, sprint metrics, SLA calculations, realized-versus-pipeline cost, RAG states, and optimization guidance.
+- [Enterprise DAX Library](dax/README.md) — Power BI measures for issue flow, sprint predictability, SLA, FinOps, trends, executive narratives, and data quality.
 - [Power BI Implementation Guide](../docs/Power-BI-Implementation-Guide.md) — architecture, semantic model, refresh, security, performance, reconciliation, and deployment guidance.
 - [Governed KPI Catalogue](../analytics/KPI-Catalogue.md) — business definitions that technical measures must implement.
 
@@ -24,12 +27,24 @@ This area contains reusable, organization-neutral implementation examples that t
 | Library | Baseline purpose | Status |
 |---|---|---|
 | `jql/` | Issue selection, cohort definitions, governance checks, and operational queues | Expanded usable baseline |
-| `sql/` | Normalized analytics model, history, snapshots, and reconciliation | Next implementation batch |
-| `mdx/` | EazyBI rolling periods, realized-versus-pipeline logic, and trends | Next implementation batch |
-| `dax/` | Power BI measures, targets, RAG states, and executive narratives | Next implementation batch |
-| `rest-api/` | Authenticated extraction, pagination, rate limits, retries, and write-back controls | Planned |
-| `automation/` | Jira automation patterns, idempotency, audit, and guardrails | Planned |
+| `sql/` | Normalized analytics model, history, snapshots, incremental loading, and reconciliation | Foundation published |
+| `mdx/` | EazyBI rolling periods, realized-versus-pipeline logic, sprint, SLA, and trends | Foundation published |
+| `dax/` | Power BI measures, targets, RAG states, trends, and executive narratives | Foundation published |
+| `rest-api/` | Authenticated extraction, pagination, rate limits, retries, and write-back controls | Next implementation batch |
+| `automation/` | Jira automation patterns, idempotency, audit, and guardrails | Next implementation batch |
 | `python/` | Validation, transformation, synthetic-data generation, and quality checks | Planned |
+
+## Cross-technology traceability
+
+The technical libraries should be used as connected layers rather than independent snippets:
+
+1. The KPI catalogue defines the governed business meaning.
+2. JQL defines a transparent operational cohort where native Jira filtering is sufficient.
+3. SQL creates durable current-state, history, snapshot, and reconciliation layers.
+4. MDX implements governed measures in EazyBI.
+5. DAX implements governed measures in Power BI.
+6. Dashboard specifications define the intended audience, visual, filters, and interpretation.
+7. Playbooks define ownership, operating cadence, controls, and action thresholds.
 
 ## Example standard
 

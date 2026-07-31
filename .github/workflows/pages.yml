@@ -1,4 +1,4 @@
-name: Deploy Executive Dashboard to GitHub Pages
+name: Deploy Reporting Portal to GitHub Pages
 
 on:
   push:
@@ -6,6 +6,9 @@ on:
       - main
     paths:
       - "dashboard-gallery/**"
+      - "reports/**"
+      - "dashboards/**"
+      - "assets/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -31,10 +34,38 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload executive dashboard
+      - name: Assemble static site
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+
+          # Preserve the existing executive dashboard as the site home page.
+          cp -R dashboard-gallery/. _site/
+
+          # Publish additional static report areas without changing the home page.
+          if [ -d reports ]; then
+            mkdir -p _site/reports
+            cp -R reports/. _site/reports/
+          fi
+
+          if [ -d dashboards ]; then
+            mkdir -p _site/dashboards
+            cp -R dashboards/. _site/dashboards/
+          fi
+
+          if [ -d assets ]; then
+            mkdir -p _site/assets
+            cp -R assets/. _site/assets/
+          fi
+
+          # Prevent Jekyll processing; these are plain static files.
+          touch _site/.nojekyll
+
+      - name: Upload reporting portal
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dashboard-gallery
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment

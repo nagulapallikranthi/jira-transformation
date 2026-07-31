@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GS-001 Sprint Health Dashboard</title>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --surface: #ffffff;
+      --text: #182230;
+      --muted: #667085;
+      --border: #d0d5dd;
+      --green: #067647;
+      --amber: #b54708;
+      --red: #b42318;
+      --blue: #175cd3;
+      --navy: #101828;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); }
+    .shell { max-width: 1500px; margin: 0 auto; padding: 24px; }
+    .header { background: var(--navy); color: white; padding: 24px; border-radius: 14px; display: grid; gap: 12px; }
+    .header-top { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+    .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; opacity: .75; }
+    h1 { margin: 6px 0 4px; font-size: 30px; }
+    .meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; color: #d0d5dd; }
+    .health { min-width: 230px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); padding: 16px; border-radius: 12px; }
+    .health strong { display: block; font-size: 26px; color: #fdb022; }
+    .grid { display: grid; gap: 16px; margin-top: 16px; }
+    .kpis { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .two { grid-template-columns: 1.4fr 1fr; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; box-shadow: 0 1px 2px rgba(16,24,40,.04); }
+    .card h2, .card h3 { margin: 0 0 12px; }
+    .label { color: var(--muted); font-size: 13px; }
+    .value { font-size: 28px; font-weight: 700; margin-top: 8px; }
+    .delta { margin-top: 6px; font-size: 12px; }
+    .good { color: var(--green); }
+    .warn { color: var(--amber); }
+    .bad { color: var(--red); }
+    .bar { height: 10px; background: #eaecf0; border-radius: 999px; overflow: hidden; margin-top: 14px; }
+    .fill { height: 100%; background: var(--blue); }
+    .fill.amber { background: #f79009; }
+    .fill.red { background: #d92d20; }
+    .chart { display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; align-items: end; height: 220px; padding: 12px 4px 0; border-bottom: 1px solid var(--border); }
+    .col { text-align: center; font-size: 11px; color: var(--muted); }
+    .stick { width: 100%; max-width: 48px; margin: auto; background: #84adff; border-radius: 6px 6px 0 0; }
+    .stick.target { background: #fdb022; }
+    .legend { display: flex; gap: 18px; margin-top: 12px; font-size: 12px; color: var(--muted); }
+    .dot { width: 10px; height: 10px; display: inline-block; border-radius: 50%; margin-right: 6px; background: #84adff; }
+    .dot.target { background: #fdb022; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { text-align: left; padding: 11px 10px; border-bottom: 1px solid #eaecf0; vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; background: #f9fafb; }
+    .pill { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+    .pill.red { color: #912018; background: #fee4e2; }
+    .pill.amber { color: #93370d; background: #fef0c7; }
+    .pill.green { color: #05603a; background: #d1fadf; }
+    .actions { margin: 0; padding-left: 18px; }
+    .actions li { margin: 0 0 10px; }
+    .footnote { color: var(--muted); font-size: 12px; margin-top: 18px; }
+    @media (max-width: 1100px) { .kpis { grid-template-columns: repeat(2, 1fr); } .two { grid-template-columns: 1fr; } }
+    @media (max-width: 650px) { .shell { padding: 12px; } .kpis { grid-template-columns: 1fr; } h1 { font-size: 24px; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="header">
+      <div class="header-top">
+        <div>
+          <div class="eyebrow">GS-001 · Enterprise Agile Reporting Platform</div>
+          <h1>Sprint Health Dashboard</h1>
+          <div class="meta">
+            <span>Sprint: 050226</span>
+            <span>Period: 03 Feb 2026 – 16 Feb 2026</span>
+            <span>Day 7 of 10</span>
+            <span>Last refresh: 16 Feb 2026, 08:00 IST</span>
+          </div>
+        </div>
+        <div class="health">
+          <span class="label" style="color:#d0d5dd">Overall Sprint Health</span>
+          <strong>AMBER · 76</strong>
+          <span>Primary drivers: blocked scope and late additions</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid kpis">
+      <article class="card"><div class="label">Commitment Reliability</div><div class="value warn">78%</div><div class="delta">Target ≥ 85%</div><div class="bar"><div class="fill amber" style="width:78%"></div></div></article>
+      <article class="card"><div class="label">Current Scope Completion</div><div class="value">68%</div><div class="delta good">+9 pts since last refresh</div><div class="bar"><div class="fill" style="width:68%"></div></div></article>
+      <article class="card"><div class="label">Scope Stability</div><div class="value warn">82%</div><div class="delta">18% scope movement</div><div class="bar"><div class="fill amber" style="width:82%"></div></div></article>
+      <article class="card"><div class="label">Blocked Scope</div><div class="value bad">21%</div><div class="delta bad">Oldest blocker: 4.2 days</div><div class="bar"><div class="fill red" style="width:21%"></div></div></article>
+      <article class="card"><div class="label">Projected Spillover</div><div class="value warn">17%</div><div class="delta">Previous sprint: 12%</div><div class="bar"><div class="fill amber" style="width:17%"></div></div></article>
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2>Completion trajectory</h2>
+        <div class="label">Completed story points compared with expected progress by sprint day</div>
+        <div class="chart">
+          <div class="col"><div class="stick" style="height:35px"></div>D1</div>
+          <div class="col"><div class="stick" style="height:55px"></div>D2</div>
+          <div class="col"><div class="stick" style="height:74px"></div>D3</div>
+          <div class="col"><div class="stick" style="height:92px"></div>D4</div>
+          <div class="col"><div class="stick" style="height:118px"></div>D5</div>
+          <div class="col"><div class="stick" style="height:136px"></div>D6</div>
+          <div class="col"><div class="stick" style="height:150px"></div>D7</div>
+          <div class="col"><div class="stick target" style="height:205px"></div>Target</div>
+        </div>
+        <div class="legend"><span><i class="dot"></i>Actual completion</span><span><i class="dot target"></i>Expected by sprint end</span></div>
+      </article>
+
+      <article class="card">
+        <h2>Executive interpretation</h2>
+        <p>The sprint remains recoverable, but delivery confidence is below target. Twenty-one percent of remaining scope is blocked and scope movement is above the preferred threshold.</p>
+        <h3>Recommended actions</h3>
+        <ol class="actions">
+          <li>Escalate the two oldest dependency blockers today.</li>
+          <li>Freeze non-critical scope additions for the remainder of the sprint.</li>
+          <li>Review the four highest-risk incomplete items in the daily governance call.</li>
+          <li>Do not extend the sprint; move unfinished work through normal spillover governance.</li>
+        </ol>
+      </article>
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2>Trend across completed sprints</h2>
+        <table>
+          <thead><tr><th>Sprint</th><th>Reliability</th><th>Velocity</th><th>Spillover</th><th>Health</th></tr></thead>
+          <tbody>
+            <tr><td>040126</td><td>88%</td><td>132 SP</td><td>8%</td><td><span class="pill green">Green</span></td></tr>
+            <tr><td>200126</td><td>84%</td><td>125 SP</td><td>11%</td><td><span class="pill amber">Amber</span></td></tr>
+            <tr><td>270126</td><td>81%</td><td>121 SP</td><td>12%</td><td><span class="pill amber">Amber</span></td></tr>
+            <tr><td>050226</td><td>78% projected</td><td>118 SP projected</td><td>17% projected</td><td><span class="pill amber">Amber</span></td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card">
+        <h2>Scope movement</h2>
+        <table>
+          <tbody>
+            <tr><th>Sprint-start commitment</th><td>142 SP</td></tr>
+            <tr><th>Added after start</th><td class="warn">+18 SP</td></tr>
+            <tr><th>Removed after start</th><td>−8 SP</td></tr>
+            <tr><th>Current scope</th><td>152 SP</td></tr>
+            <tr><th>Completed</th><td>103 SP</td></tr>
+            <tr><th>Remaining</th><td>49 SP</td></tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h2>Priority exceptions and evidence</h2>
+      <table>
+        <thead><tr><th>Issue</th><th>Team</th><th>Epic</th><th>Risk</th><th>Age</th><th>Recommended action</th></tr></thead>
+        <tbody>
+          <tr><td>CODS-18421</td><td>Platform Ops</td><td>CICD V2 Enablement</td><td><span class="pill red">Blocked</span></td><td>4.2 days</td><td>Confirm dependency delivery date and escalation owner.</td></tr>
+          <tr><td>CODS-18456</td><td>CloudOps</td><td>Observability</td><td><span class="pill amber">Aging</span></td><td>6.1 days</td><td>Split remaining work and validate acceptance path.</td></tr>
+          <tr><td>CODS-18502</td><td>DevOps</td><td>Release Automation</td><td><span class="pill amber">Late scope</span></td><td>2.0 days</td><td>Validate whether item is critical for sprint outcome.</td></tr>
+          <tr><td>CODS-18398</td><td>Security Ops</td><td>Remediation</td><td><span class="pill red">Repeated carryover</span></td><td>3 sprints</td><td>Run root-cause review and re-plan ownership.</td></tr>
+        </tbody>
+      </table>
+      <div class="footnote">Prototype data is illustrative. Production implementation must use governed source data, preserve Jira permissions, display the reporting period and refresh timestamp, and provide drill-down to auditable evidence.</div>
+    </section>
+  </main>
+</body>
+</html>

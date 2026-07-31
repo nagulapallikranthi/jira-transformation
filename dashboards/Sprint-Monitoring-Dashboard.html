@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sprint Monitoring Dashboard</title>
+<style>
+:root{--bg:#f4f6f8;--panel:#fff;--text:#172b4d;--muted:#5e6c84;--line:#dfe1e6;--green:#1f845a;--amber:#b65c02;--red:#c9372c;--blue:#0c66e4;--shadow:0 2px 10px rgba(9,30,66,.08)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
+header{background:#0b1f3a;color:#fff;padding:20px 28px;display:flex;justify-content:space-between;gap:20px;align-items:flex-start;flex-wrap:wrap}
+header h1{margin:0 0 6px;font-size:26px}header p{margin:0;color:#c7d1df}.toolbar{display:flex;gap:10px;flex-wrap:wrap}
+button,select,input{font:inherit}button{border:0;border-radius:6px;padding:9px 13px;cursor:pointer;background:#fff;color:#0b1f3a;font-weight:600}button.primary{background:#0c66e4;color:white}
+main{padding:22px;max-width:1600px;margin:auto}.section-title{display:flex;justify-content:space-between;align-items:end;margin:22px 0 10px}.section-title h2{font-size:19px;margin:0}.section-title span{font-size:12px;color:var(--muted)}
+.grid{display:grid;gap:14px}.cards{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}.two{grid-template-columns:repeat(auto-fit,minmax(420px,1fr))}.three{grid-template-columns:repeat(auto-fit,minmax(310px,1fr))}
+.panel,.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}.card{padding:15px}.card .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.card .value{font-size:29px;font-weight:700;margin:7px 0}.card .detail{font-size:12px;color:var(--muted)}
+.panel{padding:16px}.panel h3{margin:0 0 12px;font-size:16px}.rag{display:inline-flex;align-items:center;gap:7px;font-weight:700}.dot{width:11px;height:11px;border-radius:50%;display:inline-block}.green{color:var(--green)}.amber{color:var(--amber)}.red{color:var(--red)}.dot.green{background:var(--green)}.dot.amber{background:var(--amber)}.dot.red{background:var(--red)}
+svg{width:100%;height:240px;overflow:visible}.axis{stroke:#b7bec8;stroke-width:1}.gridline{stroke:#ebedf0;stroke-width:1}.series{fill:none;stroke-width:3}.planned{stroke:#0c66e4}.accepted{stroke:#1f845a}.scope{stroke:#b65c02}.blocked{stroke:#c9372c}.bar-blue{fill:#0c66e4}.bar-green{fill:#1f845a}.bar-amber{fill:#b65c02}.bar-red{fill:#c9372c}.chart-label{font-size:11px;fill:#5e6c84}.legend{display:flex;gap:15px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:7px}.legend i{display:inline-block;width:10px;height:10px;margin-right:5px;border-radius:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--muted);font-size:11px;text-transform:uppercase}.progress{height:8px;background:#ebedf0;border-radius:9px;overflow:hidden}.progress span{display:block;height:100%;background:#0c66e4}.callout{border-left:4px solid var(--blue);background:#f1f7ff;padding:12px 14px;margin:10px 0;font-size:13px}.interpret{display:grid;grid-template-columns:1fr 1fr;gap:12px}.interpret div{background:#fafbfc;border:1px solid var(--line);border-radius:8px;padding:11px}.interpret h4{margin:0 0 6px;font-size:13px}.interpret p,.interpret li{font-size:12px;color:var(--muted);line-height:1.45}.interpret ul{margin:6px 0 0;padding-left:17px}
+footer{padding:30px;text-align:center;color:var(--muted);font-size:12px}.hidden{display:none}.modal{position:fixed;inset:0;background:rgba(9,30,66,.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:10}.modal-content{background:#fff;max-width:760px;width:100%;border-radius:10px;padding:20px;max-height:90vh;overflow:auto}.modal textarea{width:100%;height:360px;font-family:Consolas,monospace;font-size:12px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
+@media(max-width:700px){main{padding:12px}.two,.three{grid-template-columns:1fr}.interpret{grid-template-columns:1fr}header{padding:17px}.panel{overflow:auto}}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>Sprint Monitoring Dashboard</h1><p id="subtitle">Enterprise sprint performance, quality, flow and governance view</p></div>
+  <div class="toolbar">
+    <select id="sprintSelect" aria-label="Select sprint"></select>
+    <button id="editBtn">Edit data</button>
+    <button id="exportBtn" class="primary">Export snapshot</button>
+  </div>
+</header>
+<main>
+  <div class="section-title"><h2>Executive sprint health</h2><span id="refreshTime"></span></div>
+  <section class="grid cards" id="summaryCards"></section>
+
+  <div class="section-title"><h2>Commitment, delivery and spillover</h2><span>Use trend and context together; never interpret velocity alone.</span></div>
+  <section class="grid two">
+    <div class="panel"><h3>Commitment reliability trend</h3><svg id="reliabilityChart" viewBox="0 0 620 240"></svg><div class="legend"><span><i style="background:#0c66e4"></i>Committed</span><span><i style="background:#1f845a"></i>Accepted</span></div></div>
+    <div class="panel"><h3>Scope composition</h3><svg id="scopeChart" viewBox="0 0 620 240"></svg><div class="legend"><span><i style="background:#0c66e4"></i>Baseline</span><span><i style="background:#b65c02"></i>Added</span><span><i style="background:#c9372c"></i>Removed / spillover</span></div></div>
+  </section>
+
+  <div class="section-title"><h2>Flow and execution</h2><span>Look for ageing, queue growth and blocked time—not only completion totals.</span></div>
+  <section class="grid three">
+    <div class="panel"><h3>Work status distribution</h3><svg id="statusChart" viewBox="0 0 420 240"></svg></div>
+    <div class="panel"><h3>Blocked and dependency health</h3><div id="blockerTable"></div></div>
+    <div class="panel"><h3>Ageing work</h3><div id="ageingTable"></div></div>
+  </section>
+
+  <div class="section-title"><h2>Quality and acceptance</h2><span>Completion is healthy only when acceptance and quality hold.</span></div>
+  <section class="grid cards" id="qualityCards"></section>
+
+  <div class="section-title"><h2>Team capacity and governance</h2><span>Use these measures to expose system constraints, not to rank individuals.</span></div>
+  <section class="grid two">
+    <div class="panel"><h3>Capacity and workload</h3><div id="capacityTable"></div></div>
+    <div class="panel"><h3>Governance actions and decisions</h3><div id="governanceTable"></div></div>
+  </section>
+
+  <div class="section-title"><h2>How to read and discuss this sprint</h2><span>Required interpretation and team conversation guidance.</span></div>
+  <section class="panel">
+    <div class="interpret">
+      <div><h4>Read the result</h4><ul id="readGuidance"></ul></div>
+      <div><h4>Interpret the RAG</h4><ul id="ragGuidance"></ul></div>
+      <div><h4>Discuss with the team</h4><ul id="discussionGuidance"></ul></div>
+      <div><h4>Measure success</h4><ul id="successGuidance"></ul></div>
+    </div>
+    <div class="callout" id="decisionCallout"></div>
+  </section>
+</main>
+<footer>Standalone sprint monitoring dashboard. Replace the sample JSON through “Edit data” or wire the same schema to Jira, EazyBI, Power BI or an API feed.</footer>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-content"><h3>Edit dashboard JSON</h3><p style="font-size:12px;color:#5e6c84">Paste data using the existing schema. Changes remain in this browser session.</p><textarea id="jsonEditor"></textarea><div class="modal-actions"><button id="cancelBtn">Cancel</button><button id="applyBtn" class="primary">Apply</button></div></div>
+</div>
+
+<script>
+const sampleData={
+  generatedAt:"2026-07-31 18:00 IST",
+  sprints:[
+    {name:"Sprint 1",goal:"Establish the first governance artefacts",goalStatus:"Partial",committed:100,accepted:20,spillover:80,scopeAdded:0,scopeRemoved:0,unplanned:0,rag:"red",quality:{firstPass:20,dod:40,reopen:0,leakage:0,acceptanceLatency:3.8},flow:{todo:0,inProgress:0,review:0,done:1,blocked:0,blockedHours:0,medianAge:0,p85Age:0},capacity:[{team:"Core",available:100,committed:100,accepted:20}],blockers:[],governance:{decisionsDue:4,decisionsClosed:4,actionsDue:4,actionsClosed:0,retroEffectiveness:0}},
+    {name:"Sprint 2",goal:"Complete Sprint 1 spillover and deliver Sprint 2 scope at a higher quality bar",goalStatus:"At Risk",committed:120,accepted:36,spillover:84,scopeAdded:8,scopeRemoved:0,unplanned:6,rag:"amber",quality:{firstPass:78,dod:88,reopen:6,leakage:2,acceptanceLatency:1.6},flow:{todo:7,inProgress:5,review:3,done:4,blocked:2,blockedHours:18,medianAge:3.2,p85Age:6.5},capacity:[{team:"Governance",available:62,committed:60,accepted:20},{team:"Analytics",available:38,committed:40,accepted:12},{team:"Dashboard",available:25,committed:20,accepted:4}],blockers:[{item:"Governance Cadence Guide",owner:"Program",age:1,severity:"Amber",action:"Complete report/KPI matrix"},{item:"RAID Template",owner:"Governance",age:2,severity:"Amber",action:"Add implementation guidance"}],governance:{decisionsDue:5,decisionsClosed:4,actionsDue:6,actionsClosed:3,retroEffectiveness:67}}
+  ]
+};
+let data=JSON.parse(JSON.stringify(sampleData));let current=1;
+const $=id=>document.getElementById(id);
+function ragFor(value,green,amber,reverse=false){if(reverse){return value<=green?'green':value<=amber?'amber':'red'}return value>=green?'green':value>=amber?'amber':'red'}
+function ragLabel(r){return `<span class="rag ${r}"><span class="dot ${r}"></span>${r.toUpperCase()}</span>`}
+function card(label,value,detail,rag){return `<div class="card"><div class="label">${label}</div><div class="value">${value}</div><div class="detail">${rag?ragLabel(rag)+' · ':''}${detail}</div></div>`}
+function selected(){return data.sprints[current]}
+function reliability(s){return Math.round((s.accepted/s.committed)*100)}
+function scopeChange(s){return Math.round(((s.scopeAdded+s.scopeRemoved)/s.committed)*100)}
+function render(){const s=selected();$('subtitle').textContent=`${s.name} · ${s.goal}`;$('refreshTime').textContent=`Data generated: ${data.generatedAt}`;
+ const rel=reliability(s),scope=scopeChange(s),blockedRatio=Math.round((s.flow.blockedHours/(Math.max(1,s.committed)*8))*100);
+ $('summaryCards').innerHTML=card('Overall sprint RAG',s.rag.toUpperCase(),`Goal: ${s.goalStatus}`,s.rag)+card('Commitment reliability',rel+'%',`${s.accepted} accepted of ${s.committed}`,ragFor(rel,85,70))+card('Spillover',s.spillover,`${Math.round(s.spillover/s.committed*100)}% of baseline`,ragFor(s.spillover/s.committed*100,10,20,true))+card('Scope change',scope+'%',`${s.scopeAdded} added · ${s.scopeRemoved} removed`,ragFor(scope,10,20,true))+card('Blocked time',s.flow.blockedHours+'h',`${s.flow.blocked} blocked items`,ragFor(blockedRatio,10,20,true))+card('Sprint goal',s.goalStatus,'Outcome-based assessment',s.goalStatus==='Achieved'?'green':s.goalStatus==='Partial'||s.goalStatus==='At Risk'?'amber':'red');
+ renderReliability();renderScope();renderStatus();renderBlockers();renderAgeing();renderQuality();renderCapacity();renderGovernance();renderGuidance();}
+function axes(svg,maxY,labels){let out='';for(let i=0;i<=4;i++){const y=205-i*45;out+=`<line x1="45" y1="${y}" x2="600" y2="${y}" class="gridline"/><text x="8" y="${y+4}" class="chart-label">${Math.round(maxY*i/4)}</text>`}out+=`<line x1="45" y1="25" x2="45" y2="205" class="axis"/><line x1="45" y1="205" x2="600" y2="205" class="axis"/>`;labels.forEach((l,i)=>out+=`<text x="${70+i*(500/Math.max(1,labels.length-1))}" y="225" text-anchor="middle" class="chart-label">${l}</text>`);return out}
+function renderReliability(){const arr=data.sprints,max=Math.max(...arr.map(x=>x.committed))*1.15;let svg=axes($('reliabilityChart'),max,arr.map(x=>x.name));const pts=(key)=>arr.map((x,i)=>`${70+i*(500/Math.max(1,arr.length-1))},${205-(x[key]/max*180)}`).join(' ');svg+=`<polyline points="${pts('committed')}" class="series planned"/><polyline points="${pts('accepted')}" class="series accepted"/>`;arr.forEach((x,i)=>{const px=70+i*(500/Math.max(1,arr.length-1));svg+=`<circle cx="${px}" cy="${205-x.committed/max*180}" r="4" fill="#0c66e4"/><circle cx="${px}" cy="${205-x.accepted/max*180}" r="4" fill="#1f845a"/>`});$('reliabilityChart').innerHTML=svg}
+function renderScope(){const s=selected(),vals=[['Baseline',s.committed,'bar-blue'],['Added',s.scopeAdded,'bar-amber'],['Removed',s.scopeRemoved,'bar-red'],['Spillover',s.spillover,'bar-red']];const max=Math.max(...vals.map(v=>v[1]),1)*1.15;let svg=axes($('scopeChart'),max,vals.map(v=>v[0]));vals.forEach((v,i)=>{const x=75+i*130,w=65,h=v[1]/max*180;svg+=`<rect x="${x}" y="${205-h}" width="${w}" height="${h}" class="${v[2]}" rx="3"/><text x="${x+w/2}" y="${195-h}" text-anchor="middle" class="chart-label">${v[1]}</text>`});$('scopeChart').innerHTML=svg}
+function renderStatus(){const s=selected(),vals=[['To do',s.flow.todo,'bar-blue'],['In progress',s.flow.inProgress,'bar-amber'],['Review',s.flow.review,'bar-amber'],['Done',s.flow.done,'bar-green'],['Blocked',s.flow.blocked,'bar-red']];const max=Math.max(...vals.map(v=>v[1]),1);let svg='<line x1="45" y1="205" x2="400" y2="205" class="axis"/>';vals.forEach((v,i)=>{const x=55+i*70,h=v[1]/max*160;svg+=`<rect x="${x}" y="${205-h}" width="42" height="${h}" class="${v[2]}" rx="3"/><text x="${x+21}" y="${195-h}" text-anchor="middle" class="chart-label">${v[1]}</text><text x="${x+21}" y="222" text-anchor="middle" class="chart-label">${v[0]}</text>`});$('statusChart').innerHTML=svg}
+function renderBlockers(){const rows=selected().blockers;if(!rows.length){$('blockerTable').innerHTML='<p class="detail">No open blockers.</p>';return}$('blockerTable').innerHTML='<table><tr><th>Item</th><th>Age</th><th>RAG</th><th>Action</th></tr>'+rows.map(x=>`<tr><td>${x.item}<br><small>${x.owner}</small></td><td>${x.age}d</td><td>${ragLabel(x.severity.toLowerCase())}</td><td>${x.action}</td></tr>`).join('')+'</table>'}
+function renderAgeing(){const f=selected().flow;$('ageingTable').innerHTML=`<table><tr><th>Measure</th><th>Value</th><th>RAG</th></tr><tr><td>Median active age</td><td>${f.medianAge}d</td><td>${ragLabel(ragFor(f.medianAge,3,5,true))}</td></tr><tr><td>85th percentile age</td><td>${f.p85Age}d</td><td>${ragLabel(ragFor(f.p85Age,5,8,true))}</td></tr><tr><td>Blocked hours</td><td>${f.blockedHours}h</td><td>${ragLabel(ragFor(f.blockedHours,12,24,true))}</td></tr></table>`}
+function renderQuality(){const q=selected().quality;$('qualityCards').innerHTML=card('First-pass acceptance',q.firstPass+'%','Target ≥90%',ragFor(q.firstPass,90,75))+card('Definition of Done',q.dod+'%','Target ≥95%',ragFor(q.dod,95,85))+card('Reopen rate',q.reopen+'%','Target <5%',ragFor(q.reopen,5,10,true))+card('Defect leakage',q.leakage+'%','Post-acceptance defects',ragFor(q.leakage,3,7,true))+card('Acceptance latency',q.acceptanceLatency+'d','Median wait to accept',ragFor(q.acceptanceLatency,1,2.5,true))}
+function renderCapacity(){const rows=selected().capacity;$('capacityTable').innerHTML='<table><tr><th>Team</th><th>Available</th><th>Committed</th><th>Accepted</th><th>Plan load</th></tr>'+rows.map(x=>{const load=Math.round(x.committed/x.available*100);return `<tr><td>${x.team}</td><td>${x.available}</td><td>${x.committed}</td><td>${x.accepted}</td><td>${load}%<div class="progress"><span style="width:${Math.min(load,100)}%"></span></div></td></tr>`}).join('')+'</table>'}
+function renderGovernance(){const g=selected().governance,dec=Math.round(g.decisionsClosed/Math.max(1,g.decisionsDue)*100),act=Math.round(g.actionsClosed/Math.max(1,g.actionsDue)*100);$('governanceTable').innerHTML=`<table><tr><th>Measure</th><th>Result</th><th>RAG</th></tr><tr><td>Decision closure</td><td>${dec}%</td><td>${ragLabel(ragFor(dec,90,75))}</td></tr><tr><td>Action closure</td><td>${act}%</td><td>${ragLabel(ragFor(act,85,70))}</td></tr><tr><td>Improvement effectiveness</td><td>${g.retroEffectiveness}%</td><td>${ragLabel(ragFor(g.retroEffectiveness,70,50))}</td></tr></table>`}
+function renderGuidance(){const s=selected(),rel=reliability(s);$('readGuidance').innerHTML=`<li>Start with the sprint goal and overall RAG.</li><li>Commitment reliability is ${rel}%; compare it with scope change and quality.</li><li>Check whether work is accumulating in progress, review or blocked states.</li><li>Use the trend across sprints rather than a single data point.</li>`;$('ragGuidance').innerHTML=`<li>Green means the measure is within the agreed control range.</li><li>Amber requires an owned recovery action or explicit risk acceptance.</li><li>Red requires escalation, root-cause analysis and a dated recovery decision.</li><li>A critical quality or governance failure overrides a favourable average score.</li>`;$('discussionGuidance').innerHTML=`<li>What outcome is at risk and why?</li><li>What is closest to acceptance and what is preventing completion?</li><li>Which blocker, dependency or decision needs leadership support?</li><li>What change can be made now without expanding sprint scope?</li>`;$('successGuidance').innerHTML=`<li>Sprint goal is achieved or transparently reassessed.</li><li>Commitment reliability and first-pass acceptance improve together.</li><li>Spillover and repeat spillover decline sprint over sprint.</li><li>Improvement actions produce measurable performance change.</li>`;$('decisionCallout').innerHTML=`<strong>Decision focus:</strong> ${s.rag==='green'?'Protect the current execution pattern and capture the practices that worked.':s.rag==='amber'?'Agree the smallest recovery actions required to protect the sprint goal; do not add new scope.':'Escalate the sprint-goal threat, classify spillover causes and reset the next sprint commitment using the evidence.'}`}
+function init(){const sel=$('sprintSelect');sel.innerHTML=data.sprints.map((s,i)=>`<option value="${i}" ${i===current?'selected':''}>${s.name}</option>`).join('');sel.onchange=e=>{current=+e.target.value;render()};render()}
+$('editBtn').onclick=()=>{$('jsonEditor').value=JSON.stringify(data,null,2);$('modal').classList.remove('hidden')};$('cancelBtn').onclick=()=>$('modal').classList.add('hidden');$('applyBtn').onclick=()=>{try{const next=JSON.parse($('jsonEditor').value);if(!Array.isArray(next.sprints)||!next.sprints.length)throw new Error('sprints array is required');data=next;current=Math.min(current,data.sprints.length-1);$('modal').classList.add('hidden');init()}catch(e){alert('Invalid JSON: '+e.message)}};$('exportBtn').onclick=()=>{const html=document.documentElement.outerHTML;const blob=new Blob([html],{type:'text/html'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`Sprint-Monitoring-${selected().name.replace(/\s+/g,'-')}.html`;a.click();URL.revokeObjectURL(a.href)};init();
+</script>
+</body>
+</html>

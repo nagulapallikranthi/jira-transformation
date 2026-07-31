@@ -1,10 +1,11 @@
-name: Deploy Reporting Portal to GitHub Pages
+name: Deploy Enterprise Reporting Portal to GitHub Pages
 
 on:
   push:
     branches:
       - main
     paths:
+      - "portal/**"
       - "dashboard-gallery/**"
       - "reports/**"
       - "dashboards/**"
@@ -34,16 +35,20 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Assemble static site
+      - name: Assemble enterprise portal
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p _site
 
-          # Preserve the existing executive dashboard as the site home page.
-          cp -R dashboard-gallery/. _site/
+          # Publish the shared enterprise portal as the website home page.
+          cp -R portal/. _site/
 
-          # Publish additional static report areas without changing the home page.
+          # Preserve the existing interactive executive gallery under /gallery/.
+          mkdir -p _site/gallery
+          cp -R dashboard-gallery/. _site/gallery/
+
+          # Publish independent report areas for portal embedding and direct access.
           if [ -d reports ]; then
             mkdir -p _site/reports
             cp -R reports/. _site/reports/
@@ -59,10 +64,9 @@ jobs:
             cp -R assets/. _site/assets/
           fi
 
-          # Prevent Jekyll processing; these are plain static files.
           touch _site/.nojekyll
 
-      - name: Upload reporting portal
+      - name: Upload enterprise reporting portal
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site

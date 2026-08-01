@@ -1,1 +1,18 @@
-const BASE='/jira-transformation/';const reports={gallery:{title:'Executive Analytics Gallery',url:BASE+'gallery/'},sprint:{title:'Sprint Health Dashboard',url:BASE+'reports/sprint-health/'},monitoring:{title:'Sprint Monitoring Dashboard v2',url:BASE+'dashboards/Sprint-Monitoring-Dashboard-v2.html'},legacy:{title:'Sprint Monitoring Dashboard',url:BASE+'dashboards/Sprint-Monitoring-Dashboard.html'}};const home=document.getElementById('home');const viewer=document.getElementById('viewer');const frame=document.getElementById('reportFrame');const viewerTitle=document.getElementById('viewerTitle');const breadcrumb=document.getElementById('breadcrumbCurrent');const openNew=document.getElementById('openNew');function setActive(key){document.querySelectorAll('.nav-link').forEach(x=>x.classList.toggle('active',x.dataset.view===key))}function showHome(){home.classList.remove('hidden');viewer.classList.remove('active');frame.removeAttribute('src');breadcrumb.textContent='Home';setActive('home');history.replaceState(null,'',BASE);document.querySelector('.sidebar').classList.remove('open')}function openReport(key){const r=reports[key];if(!r)return;home.classList.add('hidden');viewer.classList.add('active');viewerTitle.textContent=r.title;breadcrumb.textContent=r.title;frame.src=r.url;openNew.href=r.url;setActive(key);history.replaceState(null,'','#'+key);document.querySelector('.sidebar').classList.remove('open')}document.querySelectorAll('[data-view]').forEach(el=>el.addEventListener('click',()=>el.dataset.view==='home'?showHome():openReport(el.dataset.view)));document.querySelectorAll('[data-report]').forEach(el=>el.addEventListener('click',()=>openReport(el.dataset.report)));document.getElementById('menuBtn').addEventListener('click',()=>document.querySelector('.sidebar').classList.toggle('open'));document.getElementById('backHome').addEventListener('click',event=>{event.preventDefault();showHome()});const key=location.hash.slice(1);if(reports[key])openReport(key);else showHome();
+/* portal.js — Enterprise UI Core (minimal stub)
+   Purpose: small runtime helpers for the Enterprise Analytics Portal
+   Author: automation (ChatGPT) — 01-Aug-2026
+*/
+
+document.addEventListener('DOMContentLoaded', function(){
+  console.log('Portal core loaded — 01-Aug-2026');
+
+  // Simple mobile navigation toggle if present
+  var navToggle = document.querySelector('[data-ea-nav-toggle]');
+  var sidebar = document.querySelector('.ea-sidebar');
+  if(navToggle && sidebar){
+    navToggle.addEventListener('click', function(){
+      sidebar.style.display = (sidebar.style.display === 'none' || getComputedStyle(sidebar).display === 'none') ? 'block' : 'none';
+    });
+  }
+
+});

@@ -1,0 +1,8 @@
+<!-- components/kpi-card.html — reusable KPI card component (semantic, accessible) -->
+<div class="ea-card kpi" role="group" aria-label="KPI Card: {{title}}">
+  <div>
+    <div class="kpi__title" id="kpi-{{id}}-title">{{title}}</div>
+    <div class="kpi__value" aria-describedby="kpi-{{id}}-meta" id="kpi-{{id}}-value">{{value}}</div>
+  </div>
+  <div class="kpi__meta" id="kpi-{{id}}-meta">{{meta}}</div>
+</div>

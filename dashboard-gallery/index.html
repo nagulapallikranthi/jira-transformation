@@ -1,8 +1,141 @@
-@@
--  <link rel="stylesheet" href="../assets/css/design-system.css">
--  <link rel="stylesheet" href="../assets/css/portal.css">
-+  <link rel="stylesheet" href="/jira-transformation/assets/css/design-system.css">
-+  <link rel="stylesheet" href="/jira-transformation/assets/css/portal.css">
-@@
--  <script src="../assets/js/portal.js"></script>
-+  <script src="/jira-transformation/assets/js/portal.js"></script>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Engineering Command Center — Enterprise Evidence Platform</title>
+  <!-- Use relative paths so GitHub Pages serves resources correctly under the repository path -->
+  <link rel="stylesheet" href="/jira-transformation/assets/css/design-system.css">
+  <link rel="stylesheet" href="/jira-transformation/assets/css/portal.css">
+</head>
+<body class="ea-app">
+  <a class="sr-only" href="#main" id="skip-link">Skip to main content</a>
+
+  <aside class="ea-sidebar" role="navigation" aria-label="Primary navigation">
+    <div class="ea-container">
+      <div class="h2">Navigation</div>
+      <nav aria-label="Primary">
+        <ul style="list-style:none;padding:0;margin:12px 0;">
+          <li><a class="ea-btn" href="#executive">Executive</a></li>
+          <li><a class="ea-btn" href="#delivery">Delivery</a></li>
+          <li><a class="ea-btn" href="#operations">Operations</a></li>
+          <li><a class="ea-btn" href="#cloud">Cloud</a></li>
+          <li><a class="ea-btn" href="#cost">Cost</a></li>
+          <li><a class="ea-btn" href="#governance">Governance</a></li>
+        </ul>
+      </nav>
+      <div class="mt-2 small">Built for evidence-driven decisions.</div>
+    </div>
+  </aside>
+
+  <main class="ea-main" id="main" role="main">
+    <div class="ea-container">
+
+      <!-- Header (will be replaced by component loader if present) -->
+      <div id="header-placeholder"></div>
+
+      <!-- Hero / Executive Arrival -->
+      <section aria-labelledby="hero-title" class="ea-card mt-2" style="margin-bottom:16px">
+        <div class="flex justify-between items-center">
+          <div>
+            <h1 class="h1" id="hero-title">Engineering Command Center</h1>
+            <p class="p">Enterprise visibility into engineering execution, delivery health, operational excellence, governance, cost optimization and strategic decision-making.</p>
+          </div>
+          <div class="small" aria-hidden="true">Environment: <strong data-meta-env>feature/portal-core</strong></div>
+        </div>
+
+        <!-- Executive top-line: answer the question immediately -->
+        <div class="grid-4 mt-2" id="hero-kpis" aria-label="Top-level executive KPIs">
+
+          <!-- Overall health card (first impression) -->
+          <div class="ea-card" role="region" aria-labelledby="overall-health-title">
+            <div id="overall-health-title" class="h2">Is engineering healthy?</div>
+            <div class="mt-2">
+              <div class="kpi__value" style="font-size:28px;color:var(--ea-success);font-weight:700">Overall Health — GREEN</div>
+              <div class="kpi__meta mt-2">Delivery remains stable. Two platform risks require review. No executive action required.</div>
+            </div>
+          </div>
+
+          <!-- Placeholder KPI cards to be populated by the data contract loader (commit B) -->
+          <div id="kpi-1-placeholder" class="ea-card" role="region" aria-labelledby="kpi-1-title" data-portal-component="kpi-card" data-kpi-key="kpi1">
+            <div id="kpi-1-title" class="kpi__title">Sprint Health</div>
+            <div class="kpi__value">Healthy — ▲ 4% this sprint</div>
+            <div class="kpi__meta">No executive action required</div>
+          </div>
+
+          <div id="kpi-2-placeholder" class="ea-card" role="region" aria-labelledby="kpi-2-title" data-portal-component="kpi-card" data-kpi-key="kpi2">
+            <div id="kpi-2-title" class="kpi__title">Delivery</div>
+            <div class="kpi__value">On track — ▲ 2% change</div>
+            <div class="kpi__meta">Monitor backlog aging</div>
+          </div>
+
+          <div id="kpi-3-placeholder" class="ea-card" role="region" aria-labelledby="kpi-3-title" data-portal-component="kpi-card" data-kpi-key="kpi3">
+            <div id="kpi-3-title" class="kpi__title">Cost</div>
+            <div class="kpi__value">Optimization — ▼14% YTD</div>
+            <div class="kpi__meta">No action required</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Executive Summary (top screen narrative) -->
+      <section id="executive" class="ea-card mt-2" aria-labelledby="exec-summary-title">
+        <h2 id="exec-summary-title" class="h2">Executive Summary</h2>
+        <p class="p mt-2" id="exec-summary-text">Delivery remains stable. Cost savings increased 14%. Two platform risks require review. Overall engineering health is GREEN.</p>
+      </section>
+
+      <!-- Quick actions / recommendations -->
+      <section class="mt-2">
+        <div class="grid-2">
+          <div class="ea-card">
+            <h3 class="h2">Recommended action</h3>
+            <p class="p mt-2">Review platform risk A and consider temporary rollback for component X. Assign owners and schedule a 30-minute alignment with Ops.</p>
+          </div>
+
+          <div class="ea-card">
+            <h3 class="h2">What changed today</h3>
+            <p class="p mt-2">3 releases deployed; 2 incident mitigations completed; cost report refreshed at 03:00 UTC.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer with production metadata (populated later) -->
+      <footer class="mt-2 small" role="contentinfo" aria-label="Footer">
+        <div class="ea-card ea-card--flat">
+          <div class="flex justify-between items-center">
+            <div>
+              <strong>Version:</strong> <span data-meta-version>0.1</span>
+              <strong style="margin-left:12px">Branch:</strong> <span data-meta-branch>feature/portal-core</span>
+            </div>
+            <div>
+              <span>Commit: <code data-meta-commit>—</code></span>
+              <span style="margin-left:12px">Build time: <span data-meta-build>—</span></span>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </main>
+
+  <script src="/jira-transformation/assets/js/portal.js"></script>
+
+  <script>
+    // S2-004A: wire Portal data loader and initialize kpi-card components
+    (function(){
+      const dataUrl = '/jira-transformation/dashboard-gallery/data/kpis.json';
+      function initLoad(){
+        if(window.Portal && typeof Portal.loadData === 'function'){
+          Portal.loadData(dataUrl).catch(function(){
+            console.info('S2-004A: KPI data not available at', dataUrl);
+          });
+        } else {
+          // Portal not yet available; try again shortly
+          setTimeout(initLoad, 250);
+        }
+      }
+      initLoad();
+    })();
+  </script>
+</body>
+</html>

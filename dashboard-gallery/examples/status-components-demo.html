@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Status Components Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial; padding:24px; background:#f9fafb }
+    .container { max-width:900px; margin:0 auto }
+    .row { display:flex; gap:16px; align-items:center }
+    .card { background:#fff;padding:12px;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,0.04) }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Status Components — Demo</h1>
+    <div class="row">
+      <div class="card"><div class="rag-placeholder" aria-label="RAG indicator"></div></div>
+      <div class="card"><div class="trend-placeholder" aria-label="Trend indicator"></div></div>
+      <div class="card"><div class="badge-placeholder" aria-label="Badge"></div></div>
+    </div>
+
+    <script src="/assets/js/components/status-components.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', function(){
+        mountStatusComponents(document.body, {
+          rag: { state: 'green' },
+          trend: { delta: 4 },
+          badge: { text: 'Stable' }
+        });
+      });
+    </script>
+
+    <p class="muted">This page is a local demo to verify Status Components (S2-010).</p>
+  </div>
+</body>
+</html>

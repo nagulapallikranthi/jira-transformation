@@ -1,0 +1,22 @@
+{
+  "kpis": {
+    "kpi1": {
+      "title": "Sprint Health",
+      "value": "Healthy — ▲ 4% this sprint",
+      "meta": "No executive action required",
+      "rag": "green"
+    },
+    "kpi2": {
+      "title": "Delivery",
+      "value": "On track — ▲ 2% change",
+      "meta": "Monitor backlog aging",
+      "rag": "amber"
+    },
+    "kpi3": {
+      "title": "Cost",
+      "value": "Optimization — ▼14% YTD",
+      "meta": "No action required",
+      "rag": "green"
+    }
+  }
+}

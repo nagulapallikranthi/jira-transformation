@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Executive Summary Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial; padding:24px; background:#f9fafb }
+    .container { max-width:900px; margin:0 auto }
+    .executive-summary { background:#fff; padding:16px; border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.04) }
+    .muted { color:#6b7280 }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Executive Summary — Demo</h1>
+
+    <div id="executive-summary-placeholder" data-portal-component="executive-summary"></div>
+
+    <script>
+      // Minimal Portal mock used only for demo/verification purposes.
+      window.Portal = window.Portal || (function(){
+        var registry = {};
+        return {
+          registerComponent: function(name, factory){ registry[name] = factory },
+          mount: function(name, selector, props){
+            var el = document.querySelector(selector);
+            if (!el) return null;
+            var comp = (registry[name]) ? registry[name](el, props) : null;
+            return comp;
+          }
+        };
+      })();
+    </script>
+
+    <script src="/assets/js/components/executive-summary.js"></script>
+    <script>
+      // After scripts load, instruct Portal to mount the component into the placeholder
+      window.addEventListener('DOMContentLoaded', function(){
+        // Wait briefly for registration; demo-friendly
+        setTimeout(function(){
+          if (window.Portal && typeof window.Portal.mount === 'function'){
+            window.Portal.mount('executive-summary', '#executive-summary-placeholder', { title: 'Executive Summary' });
+          } else if (typeof window.mountExecutiveSummary === 'function'){
+            window.mountExecutiveSummary('#executive-summary-placeholder', { title: 'Executive Summary' });
+          }
+        }, 30);
+      });
+    </script>
+
+    <p class="muted">This page is a local demo to verify the Executive Summary component scaffold (S2-008).</p>
+  </div>
+</body>
+</html>

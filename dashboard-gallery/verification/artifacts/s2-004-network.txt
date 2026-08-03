@@ -1,0 +1,21 @@
+# Network verification artifact for S2-004 (Portal JS Integration)
+
+This file contains sample commands and expected responses to validate that the synthetic KPI fixture is fetchable in a running static server environment.
+
+Commands
+
+- curl (raw):
+
+  curl -s -I "https://raw.githubusercontent.com/nagulapallikranthi/jira-transformation/feature/portal-core/dashboard-gallery/data/kpis.json"
+
+  Expected: HTTP/1.1 200 OK
+
+- jq inspection (content):
+
+  curl -s "https://raw.githubusercontent.com/nagulapallikranthi/jira-transformation/feature/portal-core/dashboard-gallery/data/kpis.json" | jq
+
+  Expected: valid JSON with keys: kpis.kpi1,kpi2,kpi3
+
+Notes
+- If you run locally, start a static server from repo root: `python -m http.server 8000` and open `http://localhost:8000/dashboard-gallery/index.html`.
+- When testing, ensure DevTools -> Network shows `dashboard-gallery/data/kpis.json` with a 200 response.

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="120" viewBox="0 0 600 120" role="img" aria-label="Sprint progress gauge">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="140" viewBox="0 0 600 140" role="img" aria-label="Sprint progress gauge">
   <style>
     .bg { fill: #f3f4f6; }
     .bar-bg { fill: #e5e7eb; rx:8; ry:8; }
@@ -22,7 +22,7 @@
 
   <text x="512" y="92" class="text">39%</text>
 
-  <text x="24" y="112" class="muted">Last updated: 2026-08-03T11:40:00Z</text>
+  <text x="24" y="122" class="muted">Last updated: 2026-08-03T13:02:05Z</text>
 
   <title>Sprint progress gauge: 39% implemented (7/18)</title>
 </svg>

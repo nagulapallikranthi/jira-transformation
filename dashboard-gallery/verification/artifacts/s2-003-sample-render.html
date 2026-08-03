@@ -1,0 +1,50 @@
+<!-- Sample DOM snippet showing expected Executive Landing Page structure for S2-003 verification -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Executive Landing Page - Sample Render</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial; padding:24px; }
+    .kpi-grid { display:flex; gap:12px; }
+    .kpi-card { border-radius:8px; padding:12px; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,0.04); width:180px }
+    .kpi-title { font-size:13px; color:#6b7280 }
+    .kpi-value { font-size:20px; font-weight:600; color:#111827 }
+    .kpi-meta { font-size:12px; color:#6b7280 }
+  </style>
+</head>
+<body>
+  <h1>Executive Landing Page — Sample Render</h1>
+
+  <section id="executive-summary">
+    <h2>Executive Summary</h2>
+    <p class="muted">Top-level snapshot and trends for leadership.</p>
+  </section>
+
+  <section aria-labelledby="kpis-heading">
+    <h3 id="kpis-heading">Key Performance Indicators</h3>
+    <div class="kpi-grid">
+      <div class="kpi-card" role="group" aria-label="Sprint Health">
+        <div class="kpi-title">Sprint Health</div>
+        <div class="kpi-value">Healthy — ▲ 4% this sprint</div>
+        <div class="kpi-meta">No executive action required</div>
+      </div>
+
+      <div class="kpi-card" role="group" aria-label="Delivery">
+        <div class="kpi-title">Delivery</div>
+        <div class="kpi-value">On track — ▲ 2% change</div>
+        <div class="kpi-meta">Monitor backlog aging</div>
+      </div>
+
+      <div class="kpi-card" role="group" aria-label="Cost">
+        <div class="kpi-title">Cost</div>
+        <div class="kpi-value">Optimization — ▼14% YTD</div>
+        <div class="kpi-meta">No action required</div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="margin-top:24px;color:#6b7280">Generated artifact for verification: S2-003 sample render</footer>
+</body>
+</html>
